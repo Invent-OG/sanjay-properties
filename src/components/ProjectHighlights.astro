@@ -1,0 +1,58 @@
+---
+import { projectHighlights } from '../data/sanjay-gardens';
+---
+
+<section class="py-10 sm:py-16 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
+  <div class="mb-6 sm:mb-12 gsap-fade-up">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-[#121417] mb-3">
+      <span class="w-1.5 h-1.5 rounded-full bg-[#cbf33e]"></span>
+      PROJECT HIGHLIGHTS
+    </div>
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#121417]">
+      Designed around what matters.
+    </h2>
+  </div>
+
+  <!-- 3 Distinct Luxury Rounded Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 gsap-stagger-container">
+    {projectHighlights.map((item) => (
+      <div 
+        class={`gsap-stagger-item rounded-[1.75rem] sm:rounded-[2rem] p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 luxury-card relative overflow-hidden ${
+          item.isAccent 
+            ? 'bg-[#cbf33e] text-[#0e1013] shadow-lg shadow-[#cbf33e]/20' 
+            : 'bg-white border border-black/5 text-[#121417] shadow-sm hover:shadow-md'
+        }`}
+      >
+        <!-- Top Row: ID & Badge -->
+        <div class="flex items-center justify-between mb-6 sm:mb-8">
+          <span class="text-xs font-bold tracking-widest uppercase opacity-70">
+            {item.label}
+          </span>
+          <span class={`text-[11px] font-semibold px-2.5 sm:px-3 py-1 rounded-full ${
+            item.isAccent ? 'bg-black/10 text-[#0e1013]' : 'bg-black/5 text-[#5c626c]'
+          }`}>
+            {item.badge}
+          </span>
+        </div>
+
+        <!-- Main Title & Desc -->
+        <div>
+          <h3 class="text-lg sm:text-xl md:text-2xl font-bold tracking-tight mb-2 sm:mb-3 leading-snug">
+            {item.title}
+          </h3>
+          <p class={`text-xs sm:text-sm leading-relaxed ${item.isAccent ? 'text-[#0e1013]/80' : 'text-[#5c626c]'}`}>
+            {item.desc}
+          </p>
+        </div>
+
+        <!-- Bottom Detail Note -->
+        <div class="mt-6 sm:mt-8 pt-4 sm:pt-5 border-t border-current/10 flex items-center justify-between text-xs font-medium opacity-80">
+          <span>Sanjay Gardens • Coimbatore</span>
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

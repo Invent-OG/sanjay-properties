@@ -1,0 +1,56 @@
+---
+import { siteConfig } from '../data/sanjay-gardens';
+---
+
+<section class="py-10 sm:py-16 px-3 sm:px-5 lg:px-8 max-w-7xl mx-auto">
+  <div class="relative rounded-[1.75rem] sm:rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden bg-[#0e1013] text-white p-6 sm:p-12 lg:p-20 shadow-2xl image-zoom-container">
+    
+    <!-- Background Image -->
+    <img 
+      src="/images/cta.jpg" 
+      alt="Sanjay Gardens Coimbatore luxury evening panoramic estate" 
+      class="absolute inset-0 w-full h-full object-cover object-center transform scale-105"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0e1013]/98 via-[#0e1013]/75 to-[#0e1013]/50"></div>
+
+    <div class="relative z-10 max-w-3xl mx-auto text-center flex flex-col items-center">
+      
+      <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[11px] sm:text-xs font-semibold tracking-wider uppercase text-white mb-4 sm:mb-6">
+        <span class="w-2 h-2 rounded-full bg-[#cbf33e]"></span>
+        <span>START YOUR JOURNEY</span>
+      </div>
+
+      <h2 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.12] sm:leading-[1.1] mb-4 sm:mb-6">
+        Your next address starts here.
+      </h2>
+
+      <p class="text-sm sm:text-base md:text-xl text-white/80 font-normal leading-relaxed mb-8 sm:mb-10 max-w-2xl">
+        Discover Sanjay Gardens and speak with Sanjay Properties about available residential opportunities in Coimbatore.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
+        <a 
+          href="#contact" 
+          class="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-[#cbf33e] text-[#0e1013] font-bold text-xs sm:text-base hover:bg-[#bce628] hover:shadow-lg transition-all duration-300 text-center"
+        >
+          Schedule a Site Visit
+        </a>
+
+        <a 
+          href={`https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(siteConfig.whatsappDefaultMsg)}`} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 sm:py-4 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white font-semibold text-xs sm:text-base hover:bg-white/25 transition-all duration-300 text-center"
+        >
+          <svg class="w-4 h-4 text-[#cbf33e] shrink-0" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+          </svg>
+          <span>WhatsApp Us</span>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>

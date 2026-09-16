@@ -1,0 +1,57 @@
+---
+import { galleryItems } from '../data/sanjay-gardens';
+---
+
+<section id="gallery" class="py-12 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
+  
+  <!-- Header -->
+  <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-14 gap-4 sm:gap-6 gsap-fade-up">
+    <div>
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-[#121417] mb-2 sm:mb-3">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#cbf33e]"></span>
+        ARCHITECTURAL PORTFOLIO
+      </div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#121417]">
+        Discover
+      </h2>
+    </div>
+
+    <p class="text-xs sm:text-sm md:text-base text-[#5c626c] max-w-md">
+      A visual exploration of thoughtful architecture, serene water features, and expansive open living in Coimbatore.
+    </p>
+  </div>
+
+  <!-- Asymmetric 4-Card Luxury Architectural Grid (Responsive: 1 col on mobile, 2 col on tablet, 4 col on desktop) -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 gsap-stagger-container">
+    {galleryItems.map((item, index) => (
+      <div class={`gsap-stagger-item flex flex-col group ${index === 1 ? 'lg:-translate-y-4' : ''}`}>
+        <div class="relative rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden bg-neutral-200 aspect-[4/3] sm:aspect-[1/1] lg:aspect-[4/5] shadow-md image-zoom-container">
+          <img 
+            src={item.image} 
+            alt={`Sanjay Gardens Coimbatore - ${item.title}`} 
+            class="w-full h-full object-cover object-center"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          <div class="absolute top-3.5 right-3.5">
+            <span class="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-xs font-bold text-[#121417] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              ↗
+            </span>
+          </div>
+        </div>
+
+        <!-- Clean Typography Caption below card -->
+        <div class="mt-3 sm:mt-4 px-1">
+          <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-[#5c626c]">
+            {item.category}
+          </span>
+          <h3 class="text-sm sm:text-base font-bold text-[#121417] mt-0.5 group-hover:text-[#0e1013] transition-colors">
+            {item.title}
+          </h3>
+        </div>
+      </div>
+    ))}
+  </div>
+
+</section>

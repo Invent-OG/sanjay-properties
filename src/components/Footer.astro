@@ -1,0 +1,116 @@
+---
+import { siteConfig } from '../data/sanjay-gardens';
+---
+
+<footer class="bg-[#0e1013] text-white pt-12 sm:pt-16 lg:pt-20 pb-24 sm:pb-12 px-4 sm:px-6 lg:px-12 relative overflow-hidden rounded-t-[2rem] sm:rounded-t-[3.5rem] mt-8 sm:mt-12">
+  
+  <!-- Massive Background Watermark Typography matching reference -->
+  <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-[70px] sm:text-[140px] md:text-[180px] lg:text-[220px] font-black text-white/[0.03] tracking-tighter uppercase whitespace-nowrap pointer-events-none watermark-text select-none overflow-hidden">
+    {siteConfig.brandName}
+  </div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    
+    <!-- Top Row: Brand & Quick Newsletter / Enquiry Pill -->
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between pb-8 sm:pb-14 border-b border-white/10 gap-6 sm:gap-8">
+      <div>
+        <a href="#" class="inline-block focus:outline-none" aria-label="Sanjay Properties Home">
+          <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight uppercase leading-none">
+            Sanjay<br />Properties
+          </h2>
+        </a>
+        <p class="text-xs sm:text-sm text-white/60 mt-2 sm:mt-3 max-w-sm">
+          Thoughtfully planned residential environments and curated properties in Coimbatore, Tamil Nadu.
+        </p>
+      </div>
+
+      <!-- Quick Contact Pill -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
+        <div class="relative w-full sm:w-auto min-w-0 sm:min-w-[320px]">
+          <input 
+            type="email" 
+            placeholder="Enter email for brochure..." 
+            class="w-full px-4 sm:px-5 py-3 sm:py-3.5 rounded-full bg-white/10 border border-white/15 focus:outline-none focus:border-[#cbf33e] text-xs sm:text-sm text-white placeholder-white/40 pr-24"
+          />
+          <a 
+            href="#contact" 
+            class="absolute right-1.5 top-1.5 bottom-1.5 px-3.5 sm:px-4 rounded-full bg-[#cbf33e] text-[#0e1013] flex items-center justify-center font-bold text-xs hover:bg-[#bce628] transition-colors whitespace-nowrap"
+          >
+            Enquire
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Middle Grid: Navigation, Contact & Project -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 py-8 sm:py-14 text-xs sm:text-sm">
+      
+      <!-- Col 1: Explore -->
+      <div>
+        <h4 class="font-bold uppercase tracking-widest text-[#cbf33e] text-xs mb-3 sm:mb-4">Explore</h4>
+        <ul class="space-y-2 sm:space-y-2.5 text-white/70">
+          <li><a href="#hero" class="hover:text-white transition-colors">Home</a></li>
+          <li><a href="#about" class="hover:text-white transition-colors">About Sanjay Properties</a></li>
+          <li><a href="#sanjay-gardens" class="hover:text-white transition-colors">Sanjay Gardens</a></li>
+          <li><a href="#location" class="hover:text-white transition-colors">Location & Connectivity</a></li>
+          <li><a href="#gallery" class="hover:text-white transition-colors">Architectural Gallery</a></li>
+          <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 2: Featured Project -->
+      <div>
+        <h4 class="font-bold uppercase tracking-widest text-[#cbf33e] text-xs mb-3 sm:mb-4">Featured Project</h4>
+        <ul class="space-y-2 sm:space-y-2.5 text-white/70">
+          <li><span class="text-white font-medium">Sanjay Gardens</span></li>
+          <li><span>Coimbatore, Tamil Nadu</span></li>
+          <li><span>Residential Plots & Villas</span></li>
+          <li><a href="#contact" class="text-[#cbf33e] hover:underline">Schedule Site Visit →</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Direct Advisory -->
+      <div>
+        <h4 class="font-bold uppercase tracking-widest text-[#cbf33e] text-xs mb-3 sm:mb-4">Contact</h4>
+        <ul class="space-y-2 sm:space-y-2.5 text-white/70">
+          <li><span>{siteConfig.officeLocation}</span></li>
+          <li><a href={`mailto:${siteConfig.email}`} class="hover:text-white transition-colors truncate block">{siteConfig.email}</a></li>
+          <li><a href={`tel:${siteConfig.phone.replace(/[^0-9+]/g, '')}`} class="hover:text-white transition-colors">{siteConfig.phone}</a></li>
+          <li>
+            <a 
+              href={`https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(siteConfig.whatsappDefaultMsg)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[#cbf33e] hover:underline inline-flex items-center gap-1"
+            >
+              WhatsApp Support ↗
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Trust & Compliance -->
+      <div>
+        <h4 class="font-bold uppercase tracking-widest text-[#cbf33e] text-xs mb-3 sm:mb-4">Transparency</h4>
+        <p class="text-white/60 text-xs leading-relaxed mb-3">
+          All documentation, masterplan drawings, and title certifications are furnished transparently for verified buyer review.
+        </p>
+        <span class="inline-flex items-center gap-1.5 text-[11px] text-[#cbf33e]">
+          <span>✓</span> Transparent Verification
+        </span>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="pt-6 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs text-white/50">
+      <p>© {new Date().getFullYear()} {siteConfig.brandName}. All rights reserved.</p>
+      
+      <div class="flex items-center gap-6">
+        <a href="#hero" class="hover:text-white transition-colors">Back to top ↑</a>
+      </div>
+    </div>
+
+  </div>
+
+</footer>

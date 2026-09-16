@@ -1,0 +1,48 @@
+---
+import { projectStoryPrinciples } from '../data/sanjay-gardens';
+---
+
+<section class="py-12 sm:py-20 lg:py-24 px-3 sm:px-6 lg:px-12 max-w-7xl mx-auto">
+  
+  <!-- Subtle Gradient Rounded Header Container -->
+  <div class="rounded-[1.75rem] sm:rounded-[2.5rem] bg-gradient-to-b from-blue-50/80 via-white to-neutral-50 p-6 sm:p-10 lg:p-16 border border-black/5 shadow-sm">
+    <div class="max-w-3xl mb-8 sm:mb-14 gsap-fade-up">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-[#121417] mb-3">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#cbf33e]"></span>
+        OUR CORE PRINCIPLES
+      </div>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#121417] leading-[1.18] sm:leading-[1.15]">
+        Property decisions deserve clarity.
+      </h2>
+      <p class="text-sm sm:text-base md:text-lg text-[#5c626c] mt-3 sm:mt-4 max-w-xl">
+        Every project presented by Sanjay Properties is grounded in long-term usability, legal rigor, and enduring value for Coimbatore families.
+      </p>
+    </div>
+
+    <!-- 4 Structured Principle Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 gsap-stagger-container">
+      {projectStoryPrinciples.map((item) => (
+        <div class="gsap-stagger-item rounded-[1.5rem] sm:rounded-[2rem] p-6 sm:p-8 bg-white border border-black/5 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+          <div class="flex items-center justify-between mb-4 sm:mb-6">
+            <span class="text-xl sm:text-2xl lg:text-3xl font-bold text-[#121417] font-mono tracking-tight">
+              {item.number}
+            </span>
+            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#cbf33e] flex items-center justify-center text-xs font-bold text-[#0e1013] shrink-0">
+              ✓
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-[#121417] mb-2 tracking-tight">
+              {item.title}
+            </h3>
+            <p class="text-xs sm:text-sm md:text-base text-[#5c626c] leading-relaxed">
+              {item.desc}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #f6f6f3;
+    --bg-secondary: #edede9;
+    --bg-card: #ffffff;
+    --bg-dark: #0e1013;
+    --bg-dark-card: #16181d;
+    --accent-lime: #cbf33e;
+    --accent-lime-hover: #bce628;
+    --text-primary: #121417;
+    --text-secondary: #5c626c;
+    --text-muted: #8b929e;
+    --border-subtle: rgba(0, 0, 0, 0.07);
+    --border-dark-subtle: rgba(255, 255, 255, 0.09);
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #f6f6f3;
+    color: #121417;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  /* Prevent iOS zoom on input focus by ensuring at least 16px font */
+  input, select, textarea {
+    font-size: 16px;
+  }
+
+  ::selection {
+    background-color: #cbf33e;
+    color: #0e1013;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f6f6f3;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd0d8;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a6b2;
+}
+
+/* Utility Animations & Transitions */
+.luxury-pill {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .luxury-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .image-zoom-container img {
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .image-zoom-container:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.image-zoom-container {
+  overflow: hidden;
+}
+
+/* Watermark Text */
+.watermark-text {
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Hide scrollbar for category tabs */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

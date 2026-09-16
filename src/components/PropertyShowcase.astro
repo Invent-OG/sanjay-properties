@@ -1,0 +1,140 @@
+---
+import { showcaseCategories } from '../data/sanjay-gardens';
+---
+
+<section class="py-12 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto relative overflow-hidden">
+  
+  <!-- Massive Background Watermark Number matching reference layout -->
+  <div class="absolute -right-4 sm:right-4 top-6 sm:top-10 text-[100px] sm:text-[200px] lg:text-[280px] font-black text-black/[0.03] leading-none pointer-events-none watermark-text select-none overflow-hidden">
+    01
+  </div>
+
+  <!-- Header -->
+  <div class="max-w-3xl mb-8 sm:mb-14 gsap-fade-up relative z-10">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-[#121417] mb-3">
+      <span class="w-1.5 h-1.5 rounded-full bg-[#cbf33e]"></span>
+      PROPERTY SHOWCASE
+    </div>
+    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#121417] leading-[1.18] sm:leading-[1.15]">
+      Looking for a sanctuary?
+    </h2>
+    <p class="text-sm sm:text-base md:text-lg text-[#5c626c] mt-2 sm:mt-3 max-w-xl">
+      Explore the curated dimensions of Sanjay Gardens, where contemporary architecture meets the natural topography of Coimbatore.
+    </p>
+  </div>
+
+  <!-- Interactive Category Selector & Showcase -->
+  <div class="relative z-10 space-y-6 sm:space-y-8">
+    
+    <!-- Navigation Tabs (Horizontal swipeable on mobile) -->
+    <div class="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0" role="tablist">
+      {showcaseCategories.map((cat, idx) => (
+        <button 
+          type="button" 
+          role="tab"
+          data-tab={cat.id}
+          class={`showcase-tab-btn px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap shrink-0 ${
+            idx === 0 
+              ? 'bg-[#0e1013] text-white shadow-sm active-tab' 
+              : 'bg-white border border-black/5 text-[#5c626c] hover:text-[#121417] hover:bg-neutral-100'
+          }`}
+        >
+          {cat.name}
+        </button>
+      ))}
+    </div>
+
+    <!-- Tab Panels -->
+    {showcaseCategories.map((cat, idx) => (
+      <div 
+        id={`tab-panel-${cat.id}`} 
+        class={`showcase-tab-panel transition-all duration-500 ${idx === 0 ? 'block' : 'hidden'}`}
+      >
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center bg-white rounded-[1.75rem] sm:rounded-[2.5rem] p-5 sm:p-8 lg:p-10 border border-black/5 shadow-sm">
+          
+          <!-- Image Column with Overlapping Pill -->
+          <div class="lg:col-span-7 relative rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden aspect-[16/10] bg-neutral-200 image-zoom-container shadow-md">
+            <img 
+              src={cat.image} 
+              alt={`Sanjay Gardens Coimbatore - ${cat.title}`} 
+              class="w-full h-full object-cover object-center"
+              loading="lazy"
+            />
+            <div class="absolute top-3 sm:top-4 left-3 sm:left-4">
+              <span class="inline-flex items-center px-2.5 sm:px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[11px] sm:text-xs font-bold text-[#121417]">
+                {cat.badge}
+              </span>
+            </div>
+          </div>
+
+          <!-- Description Column -->
+          <div class="lg:col-span-5 flex flex-col justify-between py-2 sm:py-4">
+            <div>
+              <span class="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#5c626c]">
+                Category: {cat.name}
+              </span>
+              <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold text-[#121417] mt-1 sm:mt-2 mb-2 sm:mb-4">
+                {cat.title}
+              </h3>
+              <p class="text-xs sm:text-sm md:text-base text-[#5c626c] leading-relaxed mb-6 sm:mb-8">
+                {cat.description}
+              </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-4 sm:pt-6 border-t border-black/5">
+              <a 
+                href="#contact" 
+                class="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-[#cbf33e] text-[#0e1013] font-bold text-xs sm:text-sm hover:bg-[#bce628] transition-colors text-center"
+              >
+                <span>Enquire on This Layout</span>
+                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </a>
+
+              <a 
+                href="#gallery" 
+                class="inline-flex items-center justify-center px-4 sm:px-5 py-3 sm:py-3.5 rounded-full bg-neutral-100 text-[#121417] font-semibold text-xs sm:text-sm hover:bg-neutral-200 transition-colors text-center"
+              >
+                View Full Gallery
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    ))}
+
+  </div>
+
+</section>
+
+<script>
+  const buttons = document.querySelectorAll('.showcase-tab-btn');
+  const panels = document.querySelectorAll('.showcase-tab-panel');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-tab');
+
+      // Update buttons
+      buttons.forEach((b) => {
+        b.classList.remove('bg-[#0e1013]', 'text-white', 'shadow-sm', 'active-tab');
+        b.classList.add('bg-white', 'border', 'border-black/5', 'text-[#5c626c]');
+      });
+      btn.classList.add('bg-[#0e1013]', 'text-white', 'shadow-sm', 'active-tab');
+      btn.classList.remove('bg-white', 'border', 'border-black/5', 'text-[#5c626c]');
+
+      // Update panels
+      panels.forEach((p) => {
+        if (p.id === `tab-panel-${targetId}`) {
+          p.classList.remove('hidden');
+          p.classList.add('block');
+        } else {
+          p.classList.add('hidden');
+          p.classList.remove('block');
+        }
+      });
+    });
+  });
+</script>

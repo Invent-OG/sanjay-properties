@@ -1,0 +1,106 @@
+---
+import { locationCategories, siteConfig } from '../data/sanjay-gardens';
+---
+
+<section id="location" class="py-12 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
+  
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-center">
+    
+    <!-- Left Column: Location Details & Connectivity Grid -->
+    <div class="lg:col-span-6 gsap-fade-up">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-[#121417] mb-3">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#cbf33e]"></span>
+        STRATEGIC LOCATION
+      </div>
+      
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#121417] leading-[1.18] sm:leading-[1.15] mb-3 sm:mb-4">
+        Connected to the places that matter.
+      </h2>
+
+      <p class="text-sm sm:text-base md:text-lg text-[#5c626c] font-normal leading-relaxed mb-6 sm:mb-8">
+        Sanjay Gardens is positioned within the growing real-estate landscape of Coimbatore, offering peaceful residential living without sacrificing city connectivity.
+      </p>
+
+      <!-- Connectivity Category Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+        {locationCategories.map((cat) => (
+          <div class="rounded-2xl p-4 sm:p-5 bg-white border border-black/5 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-bold text-xs sm:text-sm text-[#121417]">{cat.category}</h3>
+              <span class="text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full bg-[#cbf33e]/30 text-[#0e1013] shrink-0">
+                Nearby
+              </span>
+            </div>
+            <ul class="text-xs text-[#5c626c] space-y-1.5 mt-2">
+              {cat.items.map((item) => (
+                <li class="flex items-start gap-1.5">
+                  <span class="text-[#0e1013] mt-0.5 shrink-0">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-black/5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="text-xs text-[#5c626c]">
+          <span>City Focus: </span>
+          <strong class="text-[#121417]">{siteConfig.locationCity}, {siteConfig.locationState}</strong>
+        </div>
+        <a 
+          href="#contact" 
+          class="text-xs font-bold uppercase tracking-wider text-[#121417] hover:text-[#cbf33e] flex items-center gap-1.5"
+        >
+          <span>Get Location Guide</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Column: Interactive Location Visual & Map Card -->
+    <div class="lg:col-span-6 gsap-fade-up">
+      <div class="relative rounded-[1.75rem] sm:rounded-[2.5rem] overflow-hidden bg-[#0e1013] p-6 sm:p-10 text-white min-h-[360px] sm:min-h-[440px] flex flex-col justify-between shadow-xl">
+        <!-- Abstract Topographical Pattern -->
+        <div class="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#cbf33e_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+        <div class="relative z-10 flex items-center justify-between">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs text-white">
+            <span class="w-2 h-2 rounded-full bg-[#cbf33e] animate-ping"></span>
+            <span>Coimbatore Hub</span>
+          </div>
+          <span class="text-[11px] sm:text-xs text-white/60 tracking-wider uppercase font-mono">Tamil Nadu, IN</span>
+        </div>
+
+        <!-- Central Pin & Landmark Graphic -->
+        <div class="relative z-10 my-6 sm:my-8">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#cbf33e] text-[#0e1013] flex items-center justify-center mb-4 shadow-lg shadow-[#cbf33e]/20">
+            <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">Sanjay Gardens</h3>
+          <p class="text-xs sm:text-sm text-white/70 mt-1 max-w-sm">
+            Conveniently accessed from prime arterial routes connecting Coimbatore's vibrant urban centers.
+          </p>
+        </div>
+
+        <!-- Bottom Action Pill -->
+        <div class="relative z-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-5 border-t border-white/10">
+          <span class="text-[11px] sm:text-xs text-white/70">Personalized site routing provided upon visit confirmation.</span>
+          <a 
+            href="#contact" 
+            class="px-5 py-2.5 rounded-full bg-[#cbf33e] text-[#0e1013] text-xs font-bold hover:bg-[#bce628] transition-colors whitespace-nowrap text-center"
+          >
+            Plan Your Route
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>

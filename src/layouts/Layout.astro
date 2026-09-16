@@ -1,0 +1,117 @@
+---
+import '../styles/global.css';
+import { siteConfig, faqData } from '../data/sanjay-gardens';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${siteConfig.brandName} | Luxury Living at ${siteConfig.projectName}, Coimbatore`,
+  description = "Discover Sanjay Gardens by Sanjay Properties in Coimbatore. Thoughtfully planned residential properties, plots, and bespoke villa enclaves created for long-term value.",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://sanjayproperties.in');
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://sanjayproperties.in/#organization",
+      "name": siteConfig.brandName,
+      "url": "https://sanjayproperties.in",
+      "description": siteConfig.brandTagline,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": siteConfig.locationCity,
+        "addressRegion": siteConfig.locationState,
+        "addressCountry": siteConfig.locationCountry
+      }
+    },
+    {
+      "@type": "Place",
+      "@id": "https://sanjayproperties.in/#sanjay-gardens",
+      "name": siteConfig.projectName,
+      "description": siteConfig.heroSubheadline,
+      "containedInPlace": {
+        "@type": "City",
+        "name": siteConfig.locationCity
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqData.map(item => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.answer
+        }
+      }))
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- SEO Primary -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Sanjay Properties, Sanjay Gardens, Sanjay Gardens Coimbatore, real estate Coimbatore, residential plots Coimbatore, luxury properties Tamil Nadu" />
+    <meta name="author" content={siteConfig.brandName} />
+    <meta name="geo.region" content="IN-TN" />
+    <meta name="geo.placename" content="Coimbatore" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/images/hero.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content="/images/hero.jpg" />
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="bg-[#f6f6f3] text-[#121417] min-h-screen selection:bg-[#cbf33e] selection:text-[#0e1013]">
+    <slot />
+
+    <!-- GSAP Initialization Script -->
+    <script>
+      import { initLuxuryAnimations } from '../scripts/animations';
+
+      function init() {
+        initLuxuryAnimations();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+      document.addEventListener('astro:page-load', init);
+    </script>
+  </body>
+</html>
