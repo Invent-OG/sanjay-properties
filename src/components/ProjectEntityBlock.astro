@@ -1,0 +1,97 @@
+---
+import { siteConfig, projectInfoCards } from '../data/sanjayGarden';
+---
+
+<section class="py-10 sm:py-16 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
+  
+  <!-- Section Intro -->
+  <div class="mb-8 sm:mb-12 gsap-fade-up">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-[#121417] mb-3">
+      <span class="w-1.5 h-1.5 rounded-full bg-[#cbf33e]"></span>
+      PROJECT AT A GLANCE
+    </div>
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#121417]">
+      Essential Project Details
+    </h2>
+    <p class="text-xs sm:text-sm md:text-base text-[#5c626c] mt-2 max-w-2xl">
+      Key factual parameters regarding Sanjay Garden in Saravanampatti, Coimbatore, grounded in public source records.
+    </p>
+  </div>
+
+  <!-- 4 Elegant Project Information Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 gsap-stagger-container">
+    {projectInfoCards.map((card, idx) => (
+      <div 
+        class={`gsap-stagger-item rounded-[1.75rem] sm:rounded-[2rem] p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 luxury-card relative overflow-hidden ${
+          idx === 1 
+            ? 'bg-[#cbf33e] text-[#0e1013] shadow-lg shadow-[#cbf33e]/20 border border-[#cbf33e]' 
+            : 'bg-white border border-black/5 text-[#121417] shadow-sm hover:shadow-md'
+        }`}
+      >
+        <!-- Top Row: Card Number & Badge -->
+        <div class="flex items-center justify-between mb-5 sm:mb-6">
+          <span class="text-xs font-extrabold tracking-widest uppercase opacity-75">
+            CARD {card.id}
+          </span>
+          <span class={`text-[10px] sm:text-[11px] font-semibold px-2.5 sm:px-3 py-1 rounded-full ${
+            idx === 1 ? 'bg-black/10 text-[#0e1013]' : 'bg-black/5 text-[#5c626c]'
+          }`}>
+            {card.badge}
+          </span>
+        </div>
+
+        <!-- Main Content -->
+        <div>
+          <span class="text-[11px] font-bold tracking-wider uppercase opacity-70 block mb-1">
+            {card.label}
+          </span>
+          <h3 class="text-lg sm:text-xl font-bold tracking-tight mb-1 leading-snug">
+            {card.title}
+          </h3>
+          <p class={`text-xs font-semibold mb-3 ${idx === 1 ? 'text-[#0e1013]/90' : 'text-[#121417]/80'}`}>
+            {card.subtitle}
+          </p>
+          <p class={`text-xs leading-relaxed ${idx === 1 ? 'text-[#0e1013]/80' : 'text-[#5c626c]'}`}>
+            {card.desc}
+          </p>
+        </div>
+
+        <!-- Bottom Note -->
+        <div class="mt-6 pt-4 border-t border-current/10 flex items-center justify-between text-[11px] font-medium opacity-80">
+          <span>Sanjay Garden</span>
+          <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Factual Disclosures Box for AI & Human Trust -->
+  <div class="mt-6 sm:mt-8 p-5 sm:p-6 rounded-2xl bg-neutral-100/80 border border-black/5 text-xs text-[#5c626c] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 gsap-fade-up">
+    <div class="flex items-start gap-3">
+      <div class="w-5 h-5 rounded-full bg-[#0e1013] text-white flex items-center justify-center font-mono text-[10px] shrink-0 mt-0.5">
+        i
+      </div>
+      <div>
+        <p class="font-medium text-[#121417]">
+          <strong>Factual Reference Notice:</strong> Historical layout reference: <strong>{siteConfig.layoutApprovalRef}</strong> | Survey: <strong>{siteConfig.surveyNumbers.join(', ')}</strong>
+        </p>
+        <p class="mt-0.5 text-[#5c626c]">
+          Historical layout reference — documentation to be confirmed with Sanjay Properties. Current offerings subject to verification.
+        </p>
+      </div>
+    </div>
+
+    <a 
+      href="#contact" 
+      class="text-xs font-bold text-[#121417] hover:text-[#cbf33e] flex items-center gap-1.5 whitespace-nowrap self-end md:self-auto shrink-0"
+    >
+      <span>Request Documentation</span>
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+      </svg>
+    </a>
+  </div>
+
+</section>

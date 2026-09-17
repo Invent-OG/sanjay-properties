@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 90" fill="none">
+  <!-- Architectural Tiered Mark -->
+  <g fill="#0e1013">
+    <!-- Top level left roof -->
+    <path d="M16 12 L50 18 L50 24 L18 18 Z" />
+    <!-- Tier 2 -->
+    <path d="M16 28 L50 34 L68 24 L82 28 L82 34 L68 30 L50 40 L16 34 Z" />
+    <!-- Tier 3 -->
+    <path d="M16 44 L50 50 L68 40 L82 44 L82 50 L68 46 L50 56 L16 50 Z" />
+    <!-- Tier 4 / Foundation -->
+    <path d="M16 60 L50 66 L68 56 L82 60 L82 66 L68 62 L50 72 L16 66 Z" />
+    <!-- Ground level small block -->
+    <rect x="68" y="69" width="14" height="4.5" rx="0.5" />
+  </g>
+
+  <!-- SANJAY PROPERTIES Typography -->
+  <text x="105" y="44" fill="#0e1013" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="29" font-weight="800" letter-spacing="4.5">SANJAY</text>
+  <text x="106" y="66" fill="#0e1013" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" letter-spacing="6.5">PROPERTIES</text>
+</svg>

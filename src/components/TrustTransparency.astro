@@ -1,0 +1,101 @@
+---
+import { siteConfig, transparencyDocuments } from '../data/sanjayGarden';
+---
+
+<section id="transparency" class="py-12 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
+  
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-14 items-center">
+    
+    <!-- Left Column: Typographic Trust Composition -->
+    <div class="lg:col-span-5 gsap-fade-up">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-[#121417] mb-3">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#cbf33e]"></span>
+        TRANSPARENCY & RIGOR
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#121417] leading-[1.15] mb-4">
+        Built around clarity.
+      </h2>
+
+      <p class="text-sm sm:text-base text-[#5c626c] font-normal leading-relaxed mb-6">
+        We believe a property relationship begins with complete transparency. All historical layout references, survey numbers, and municipal records are documented openly for buyer verification.
+      </p>
+
+      <!-- Factual Summary Card -->
+      <div class="rounded-2xl bg-[#0e1013] p-6 text-white space-y-3">
+        <div class="flex justify-between items-center text-xs pb-2 border-b border-white/10">
+          <span class="text-white/60">Entity</span>
+          <span class="font-bold text-white">{siteConfig.brandName}</span>
+        </div>
+        <div class="flex justify-between items-center text-xs pb-2 border-b border-white/10">
+          <span class="text-white/60">Featured Project</span>
+          <span class="font-bold text-white">{siteConfig.projectName}</span>
+        </div>
+        <div class="flex justify-between items-center text-xs pb-2 border-b border-white/10">
+          <span class="text-white/60">Location</span>
+          <span class="text-white">Saravanampatti, Coimbatore</span>
+        </div>
+        <div class="flex justify-between items-center text-xs">
+          <span class="text-white/60">Approval Ref</span>
+          <span class="font-mono text-[#cbf33e] font-bold text-xs">{siteConfig.layoutApprovalRef}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: "Information you can review" Document Cards -->
+    <div class="lg:col-span-7 gsap-fade-up">
+      <div class="bg-white rounded-[1.75rem] sm:rounded-[2.5rem] p-6 sm:p-8 lg:p-10 border border-black/5 shadow-sm space-y-6">
+        <div class="flex items-center justify-between pb-3 border-b border-black/5">
+          <h3 class="text-base sm:text-lg font-bold text-[#121417]">
+            Information You Can Review
+          </h3>
+          <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-black/5 text-[#5c626c]">
+            On Request
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {transparencyDocuments.map((doc) => (
+            <div class="p-4 rounded-2xl bg-neutral-50 border border-black/5 flex flex-col justify-between hover:bg-neutral-100 transition-colors">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#5c626c] font-mono">
+                    {doc.status}
+                  </span>
+                  <span class="text-[#0e1013] text-xs">📄</span>
+                </div>
+                <h4 class="font-bold text-xs sm:text-sm text-[#121417]">
+                  {doc.title}
+                </h4>
+                <p class="text-[11px] font-mono text-[#0e1013] font-semibold mt-0.5">
+                  {doc.ref}
+                </p>
+                <p class="text-[11px] text-[#5c626c] mt-2 leading-relaxed">
+                  {doc.note}
+                </p>
+              </div>
+
+              <a 
+                href={`https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hi Sanjay Properties, I would like to request the ${doc.title}.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-3 pt-2.5 border-t border-black/5 text-[11px] font-bold text-[#121417] hover:text-[#cbf33e] flex items-center justify-between"
+              >
+                <span>Request Document</span>
+                <span>→</span>
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <div class="pt-2 text-center sm:text-left">
+          <p class="text-xs text-[#5c626c]">
+            * Project documents and verification records are made available on request to prospective purchasers.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>

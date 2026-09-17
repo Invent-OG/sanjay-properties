@@ -1,0 +1,326 @@
+---
+import { siteConfig, layoutHighlights } from '../data/sanjayGarden';
+---
+
+<section id="layout" class="py-12 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
+  
+  <!-- Header -->
+  <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-5 gsap-fade-up">
+    <div>
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-[#121417] mb-2 sm:mb-3">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#cbf33e]"></span>
+        HISTORICAL MASTERPLAN
+      </div>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#121417]">
+        Explore the Original Layout
+      </h2>
+      <p class="text-xs sm:text-sm md:text-base text-[#5c626c] mt-2 max-w-2xl">
+        Features shown in the historical layout plan (D.D.T.P / C.L.P.A No. 42/2008), depicting residential road networks, open green space, and site planning in Saravanampatti.
+      </p>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a 
+        href={`https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent("Hi Sanjay Properties, please share the Sanjay Garden layout plan PDF.")}`} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#0e1013] text-white text-xs sm:text-sm font-semibold hover:bg-[#cbf33e] hover:text-[#0e1013] transition-all duration-300 whitespace-nowrap shadow-sm"
+      >
+        <span>Request Full Layout Drawing</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Interactive High-Resolution Blueprint & Layout Container -->
+  <div class="bg-[#0e1013] rounded-[1.75rem] sm:rounded-[2.5rem] lg:rounded-[3rem] p-5 sm:p-8 lg:p-12 text-white shadow-2xl relative overflow-hidden gsap-fade-up">
+    
+    <!-- Top Bar with Status and Viewer Controls -->
+    <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10 relative z-10">
+      <div class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#cbf33e] animate-pulse"></span>
+        <span class="text-xs sm:text-sm font-bold tracking-wide uppercase">Sanjay Garden Layout Plan</span>
+        <span class="text-[11px] font-mono text-white/50 px-2.5 py-0.5 rounded-full bg-white/10 hidden sm:inline-block">Ref: 42/2008</span>
+      </div>
+
+      <!-- Controls -->
+      <div class="flex items-center gap-2">
+        <button 
+          id="zoom-out-btn" 
+          type="button"
+          class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold transition-colors cursor-pointer"
+          aria-label="Zoom Out Layout"
+        >
+          −
+        </button>
+        <button 
+          id="zoom-reset-btn" 
+          type="button"
+          class="px-3 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xs font-mono transition-colors cursor-pointer"
+          aria-label="Reset Zoom"
+        >
+          100%
+        </button>
+        <button 
+          id="zoom-in-btn" 
+          type="button"
+          class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold transition-colors cursor-pointer"
+          aria-label="Zoom In Layout"
+        >
+          +
+        </button>
+        <button 
+          id="fullscreen-modal-btn" 
+          type="button"
+          class="px-3.5 h-9 rounded-full bg-[#cbf33e] text-[#0e1013] flex items-center justify-center gap-1.5 text-xs font-bold hover:bg-[#bce628] transition-colors cursor-pointer ml-2"
+          aria-label="Fullscreen Layout Modal"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+          </svg>
+          <span class="hidden sm:inline">Fullscreen</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Viewer Canvas / Interactive SVG Architectural Blueprint -->
+    <div class="relative my-6 sm:my-8 min-h-[380px] sm:min-h-[480px] lg:min-h-[540px] rounded-2xl bg-[#14171d] border border-white/10 overflow-hidden flex items-center justify-center cursor-grab active:cursor-grabbing">
+      
+      <!-- Blueprint Grid Background Pattern -->
+      <div class="absolute inset-0 opacity-20 pointer-events-none bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] [background-size:24px_24px]"></div>
+
+      <!-- Zoomable Blueprint SVG Wrapper -->
+      <div id="blueprint-wrapper" class="relative z-10 transition-transform duration-200 ease-out origin-center w-full max-w-4xl p-6 sm:p-10 flex flex-col items-center">
+        
+        <!-- Architectural Plan Graphic Representation -->
+        <svg viewBox="0 0 800 460" class="w-full h-auto drop-shadow-2xl select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Boundary Container -->
+          <rect x="20" y="20" width="760" height="420" rx="16" stroke="#cbf33e" stroke-width="2" stroke-dasharray="6 4" fill="#0b0d10" fill-opacity="0.8"/>
+          
+          <!-- 80 FT Arterial Road -->
+          <rect x="20" y="50" width="760" height="44" fill="#222730"/>
+          <line x1="20" y1="72" x2="780" y2="72" stroke="#cbf33e" stroke-width="1.5" stroke-dasharray="8 6"/>
+          <text x="400" y="77" fill="#ffffff" font-size="12" font-family="monospace" font-weight="bold" text-anchor="middle" letter-spacing="2">80 FT MAIN ARTERIAL ROAD</text>
+
+          <!-- 60 FT Road Avenue -->
+          <rect x="360" y="94" width="80" height="346" fill="#1b1f26"/>
+          <line x1="400" y1="94" x2="400" y2="440" stroke="#ffffff" stroke-width="1" stroke-dasharray="6 6" opacity="0.4"/>
+          <text x="400" y="270" fill="#cbf33e" font-size="11" font-family="monospace" font-weight="bold" text-anchor="middle" transform="rotate(-90 400 270)" letter-spacing="1">60 FT CENTRAL AVENUE</text>
+
+          <!-- 33 FT Cross Road North -->
+          <rect x="20" y="190" width="340" height="28" fill="#252b36"/>
+          <text x="190" y="208" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.8" text-anchor="middle">33 FT ROAD</text>
+
+          <!-- 33 FT Cross Road South -->
+          <rect x="440" y="190" width="340" height="28" fill="#252b36"/>
+          <text x="610" y="208" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.8" text-anchor="middle">33 FT ROAD</text>
+
+          <!-- 23 FT Cross Roads -->
+          <rect x="20" y="320" width="340" height="22" fill="#20242d"/>
+          <text x="190" y="335" fill="#ffffff" font-size="9" font-family="monospace" opacity="0.7" text-anchor="middle">23 FT INTERNAL ROAD</text>
+
+          <rect x="440" y="320" width="340" height="22" fill="#20242d"/>
+          <text x="610" y="335" fill="#ffffff" font-size="9" font-family="monospace" opacity="0.7" text-anchor="middle">23 FT INTERNAL ROAD</text>
+
+          <!-- Residential House Sites Grid - Sector A -->
+          <g fill="#161a22" stroke="#ffffff" stroke-width="0.75" stroke-opacity="0.15">
+            <rect x="40" y="106" width="65" height="72" rx="4"/>
+            <rect x="115" y="106" width="65" height="72" rx="4"/>
+            <rect x="190" y="106" width="65" height="72" rx="4"/>
+            <rect x="265" y="106" width="75" height="72" rx="4"/>
+
+            <rect x="40" y="230" width="65" height="78" rx="4"/>
+            <rect x="115" y="230" width="65" height="78" rx="4"/>
+            <rect x="190" y="230" width="65" height="78" rx="4"/>
+            <rect x="265" y="230" width="75" height="78" rx="4"/>
+          </g>
+
+          <!-- Residential House Sites Grid - Sector B -->
+          <g fill="#161a22" stroke="#ffffff" stroke-width="0.75" stroke-opacity="0.15">
+            <rect x="460" y="106" width="65" height="72" rx="4"/>
+            <rect x="535" y="106" width="65" height="72" rx="4"/>
+            <rect x="610" y="106" width="65" height="72" rx="4"/>
+            <rect x="685" y="106" width="75" height="72" rx="4"/>
+
+            <rect x="460" y="230" width="65" height="78" rx="4"/>
+            <rect x="535" y="230" width="65" height="78" rx="4"/>
+            <rect x="610" y="230" width="65" height="78" rx="4"/>
+            <rect x="685" y="230" width="75" height="78" rx="4"/>
+          </g>
+
+          <!-- Commercial / Shop Area -->
+          <rect x="40" y="354" width="130" height="74" rx="6" fill="#2d2b1f" stroke="#cbf33e" stroke-width="1.2"/>
+          <text x="105" y="385" fill="#cbf33e" font-size="10" font-weight="bold" font-family="monospace" text-anchor="middle">COMMERCIAL</text>
+          <text x="105" y="402" fill="#ffffff" font-size="8" font-family="monospace" opacity="0.8" text-anchor="middle">Shop Area</text>
+
+          <!-- Park / Reserved Open Space Area (734.85 sq. m.) -->
+          <rect x="590" y="354" width="170" height="74" rx="6" fill="#1b2a1c" stroke="#4ade80" stroke-width="1.5"/>
+          <text x="675" y="382" fill="#4ade80" font-size="10" font-weight="bold" font-family="monospace" text-anchor="middle">PARK / OPEN SPACE</text>
+          <text x="675" y="400" fill="#ffffff" font-size="9" font-family="monospace" text-anchor="middle">734.85 sq. m. Reserved</text>
+
+          <!-- Survey Tag -->
+          <text x="760" y="38" fill="#ffffff" font-size="8" font-family="monospace" opacity="0.5" text-anchor="end">S.F. 402/2pt, 3pt, 4pt • Saravanampatti</text>
+        </svg>
+
+        <p class="text-[11px] text-white/50 text-center mt-3 font-mono">
+          * Diagrammatic illustration representing features documented in historical approval D.D.T.P / C.L.P.A No. 42/2008.
+        </p>
+      </div>
+
+      <!-- Floating Bottom Badge -->
+      <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[11px] text-white/70 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 pointer-events-none">
+        <span>Drag or click + / − to zoom</span>
+        <span class="text-[#cbf33e]">Saravanampatti, Coimbatore</span>
+      </div>
+    </div>
+
+    <!-- Visual Highlights Badges Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-4">
+      {layoutHighlights.map((hl) => (
+        <div class="rounded-2xl bg-white/5 border border-white/10 p-3.5 text-center flex flex-col justify-between hover:bg-white/10 transition-colors">
+          <div>
+            <span class="text-[10px] uppercase font-mono text-[#cbf33e] block mb-1">
+              {hl.category}
+            </span>
+            <h4 class="text-xs sm:text-sm font-bold text-white tracking-tight">
+              {hl.title}
+            </h4>
+          </div>
+          <span class="text-[10px] text-white/50 mt-2 block">
+            Historical Plan
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Footer Notice -->
+    <div class="mt-6 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-white/60">
+      <p>
+        <strong>Note:</strong> Features shown in the historical layout plan. Sanjay Properties provides verified copies for prospective buyer examination.
+      </p>
+      <a href="#contact" class="text-[#cbf33e] font-semibold hover:underline shrink-0">
+        Enquire about Layout Drawings →
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Fullscreen Modal Container -->
+<div 
+  id="fullscreen-layout-modal" 
+  class="fixed inset-0 z-[120] bg-black/95 text-white flex flex-col justify-between p-4 sm:p-8 opacity-0 pointer-events-none transition-all duration-300"
+>
+  <div class="flex items-center justify-between pb-4 border-b border-white/15">
+    <div class="flex items-center gap-3">
+      <span class="w-2.5 h-2.5 rounded-full bg-[#cbf33e]"></span>
+      <h3 class="text-sm sm:text-base font-bold uppercase tracking-wider">Sanjay Garden Layout Blueprint</h3>
+    </div>
+    <button 
+      id="close-layout-modal" 
+      type="button" 
+      class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+      aria-label="Close Fullscreen View"
+    >
+      ✕
+    </button>
+  </div>
+
+  <div class="my-auto flex items-center justify-center p-4 overflow-auto max-h-[80vh]">
+    <div class="w-full max-w-5xl">
+      <img 
+        src="/images/feature-main.jpg" 
+        alt="Sanjay Garden Saravanampatti layout masterplan document" 
+        class="w-full h-auto rounded-2xl shadow-2xl border border-white/15"
+      />
+    </div>
+  </div>
+
+  <div class="text-center text-xs text-white/60 pt-3 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-2">
+    <span>Historical layout reference: D.D.T.P / C.L.P.A No. 42/2008 • Saravanampatti</span>
+    <a 
+      href={`https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent("Hi, please send me the official Sanjay Garden layout PDF.")}`} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="text-[#cbf33e] hover:underline font-semibold"
+    >
+      Request PDF on WhatsApp
+    </a>
+  </div>
+</div>
+
+<script>
+  function setupLayoutViewer() {
+    let scale = 1;
+    const wrapper = document.getElementById('blueprint-wrapper');
+    const zoomIn = document.getElementById('zoom-in-btn');
+    const zoomOut = document.getElementById('zoom-out-btn');
+    const zoomReset = document.getElementById('zoom-reset-btn');
+    const modalBtn = document.getElementById('fullscreen-modal-btn');
+    const modal = document.getElementById('fullscreen-layout-modal');
+    const closeModal = document.getElementById('close-layout-modal');
+
+    function updateTransform() {
+      if (wrapper) {
+        wrapper.style.transform = `scale(${scale})`;
+      }
+      if (zoomReset) {
+        zoomReset.textContent = `${Math.round(scale * 100)}%`;
+      }
+    }
+
+    zoomIn?.addEventListener('click', () => {
+      if (scale < 1.8) {
+        scale += 0.15;
+        updateTransform();
+      }
+    });
+
+    zoomOut?.addEventListener('click', () => {
+      if (scale > 0.7) {
+        scale -= 0.15;
+        updateTransform();
+      }
+    });
+
+    zoomReset?.addEventListener('click', () => {
+      scale = 1;
+      updateTransform();
+    });
+
+    modalBtn?.addEventListener('click', () => {
+      if (modal) {
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modal.classList.add('opacity-100', 'pointer-events-auto');
+        document.documentElement.style.overflow = 'hidden';
+      }
+    });
+
+    closeModal?.addEventListener('click', () => {
+      if (modal) {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        modal.classList.remove('opacity-100', 'pointer-events-auto');
+        document.documentElement.style.overflow = '';
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && !modal.classList.contains('opacity-0')) {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        modal.classList.remove('opacity-100', 'pointer-events-auto');
+        document.documentElement.style.overflow = '';
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupLayoutViewer);
+  } else {
+    setupLayoutViewer();
+  }
+
+  document.addEventListener('astro:page-load', setupLayoutViewer);
+</script>

@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { siteConfig, faqData } from '../data/sanjay-gardens';
+import { siteConfig, faqData } from '../data/sanjayGarden';
 
 interface Props {
   title?: string;
@@ -8,8 +8,8 @@ interface Props {
 }
 
 const {
-  title = `${siteConfig.brandName} | Luxury Living at ${siteConfig.projectName}, Coimbatore`,
-  description = "Discover Sanjay Gardens by Sanjay Properties in Coimbatore. Thoughtfully planned residential properties, plots, and bespoke villa enclaves created for long-term value.",
+  title = `${siteConfig.brandName} | ${siteConfig.projectName}, Saravanampatti, Coimbatore`,
+  description = "Discover Sanjay Garden by Sanjay Properties in Saravanampatti, Coimbatore. Explore the project, location, layout information and enquire about current availability.",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://sanjayproperties.in');
@@ -23,22 +23,66 @@ const jsonLd = {
       "name": siteConfig.brandName,
       "url": "https://sanjayproperties.in",
       "description": siteConfig.brandTagline,
+      "telephone": siteConfig.phone,
+      "email": siteConfig.email,
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": siteConfig.officeLocation,
         "addressLocality": siteConfig.locationCity,
         "addressRegion": siteConfig.locationState,
+        "postalCode": siteConfig.locationPincode,
         "addressCountry": siteConfig.locationCountry
       }
     },
     {
       "@type": "Place",
-      "@id": "https://sanjayproperties.in/#sanjay-gardens",
-      "name": siteConfig.projectName,
-      "description": siteConfig.heroSubheadline,
-      "containedInPlace": {
-        "@type": "City",
-        "name": siteConfig.locationCity
+      "@id": "https://sanjayproperties.in/#sanjay-garden",
+      "name": `${siteConfig.projectName} (${siteConfig.historicalProjectDesignation})`,
+      "description": "Established residential layout in Saravanampatti, Coimbatore, planned with road networks and open community space.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": siteConfig.historicalAddress,
+        "addressLocality": siteConfig.locationCity,
+        "addressRegion": siteConfig.locationState,
+        "postalCode": siteConfig.locationPincode,
+        "addressCountry": siteConfig.locationCountry
       }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sanjayproperties.in/#website",
+      "url": "https://sanjayproperties.in",
+      "name": `${siteConfig.brandName} - ${siteConfig.projectName}`,
+      "publisher": {
+        "@id": "https://sanjayproperties.in/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://sanjayproperties.in/#webpage",
+      "url": "https://sanjayproperties.in",
+      "name": title,
+      "description": description,
+      "isPartOf": {
+        "@id": "https://sanjayproperties.in/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://sanjayproperties.in"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": siteConfig.projectName,
+          "item": "https://sanjayproperties.in/#sanjay-garden"
+        }
+      ]
     },
     {
       "@type": "FAQPage",
@@ -63,14 +107,16 @@ const jsonLd = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
     
-    <!-- SEO Primary -->
+    <!-- Primary SEO -->
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="keywords" content="Sanjay Properties, Sanjay Gardens, Sanjay Gardens Coimbatore, real estate Coimbatore, residential plots Coimbatore, luxury properties Tamil Nadu" />
+    <meta name="keywords" content="Sanjay Properties Coimbatore, Sanjay Garden Coimbatore, Sanjay Garden Saravanampatti, Sanjay Gardens Coimbatore, real estate Saravanampatti, properties Saravanampatti, plots Saravanampatti, residential plots Coimbatore, property in Saravanampatti, real estate in Coimbatore" />
     <meta name="author" content={siteConfig.brandName} />
     <meta name="geo.region" content="IN-TN" />
-    <meta name="geo.placename" content="Coimbatore" />
+    <meta name="geo.placename" content="Saravanampatti, Coimbatore" />
+    <meta name="geo.position" content="11.0805;76.9998" />
+    <meta name="ICBM" content="11.0805, 76.9998" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -78,8 +124,9 @@ const jsonLd = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content="/images/hero.jpg" />
+    <meta property="og:site_name" content={siteConfig.brandName} />
 
-    <!-- Twitter -->
+    <!-- Twitter Card -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />

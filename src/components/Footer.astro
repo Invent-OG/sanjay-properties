@@ -1,35 +1,50 @@
 ---
-import { siteConfig } from '../data/sanjay-gardens';
+import { siteConfig } from '../data/sanjayGarden';
 ---
 
 <footer class="bg-[#0e1013] text-white pt-12 sm:pt-16 lg:pt-20 pb-24 sm:pb-12 px-4 sm:px-6 lg:px-12 relative overflow-hidden rounded-t-[2rem] sm:rounded-t-[3.5rem] mt-8 sm:mt-12">
   
   <!-- Massive Background Watermark Typography matching reference -->
-  <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-[70px] sm:text-[140px] md:text-[180px] lg:text-[220px] font-black text-white/[0.03] tracking-tighter uppercase whitespace-nowrap pointer-events-none watermark-text select-none overflow-hidden">
+  <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-[60px] sm:text-[130px] md:text-[170px] lg:text-[210px] font-black text-white/[0.03] tracking-tighter uppercase whitespace-nowrap pointer-events-none watermark-text select-none overflow-hidden">
     {siteConfig.brandName}
   </div>
 
   <div class="max-w-7xl mx-auto relative z-10">
     
-    <!-- Top Row: Brand & Quick Newsletter / Enquiry Pill -->
+    <!-- Top Row: Official Brand Lockup & Quick Brochure / Enquiry Pill -->
     <div class="flex flex-col lg:flex-row lg:items-center justify-between pb-8 sm:pb-14 border-b border-white/10 gap-6 sm:gap-8">
       <div>
-        <a href="#" class="inline-block focus:outline-none" aria-label="Sanjay Properties Home">
-          <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight uppercase leading-none">
-            Sanjay<br />Properties
-          </h2>
+        <a href="#hero" class="inline-flex items-center gap-3.5 focus:outline-none group" aria-label="Sanjay Properties Home">
+          <!-- Architectural Logo Mark in White / Accent -->
+          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/10 border border-white/15 text-[#cbf33e] flex items-center justify-center p-2.5 transition-transform duration-300 group-hover:scale-105 shrink-0">
+            <svg class="w-full h-full" viewBox="0 0 160 120" fill="currentColor">
+              <path d="M42 20 L86 28 L86 36 L44 28 Z" />
+              <path d="M42 42 L86 50 L108 36 L126 42 L126 50 L108 44 L86 58 L42 50 Z" />
+              <path d="M42 64 L86 72 L108 58 L126 64 L126 72 L108 66 L86 80 L42 72 Z" />
+              <path d="M42 86 L86 94 L108 80 L126 86 L126 94 L108 88 L86 102 L42 94 Z" />
+              <rect x="108" y="98" width="18" height="6" rx="1" />
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-[0.18em] uppercase leading-none text-white">
+              SANJAY
+            </span>
+            <span class="text-[10px] sm:text-xs font-bold tracking-[0.3em] uppercase leading-tight text-white/75 mt-1">
+              PROPERTIES
+            </span>
+          </div>
         </a>
-        <p class="text-xs sm:text-sm text-white/60 mt-2 sm:mt-3 max-w-sm">
-          Thoughtfully planned residential environments and curated properties in Coimbatore, Tamil Nadu.
+        <p class="text-xs sm:text-sm text-white/60 mt-3 sm:mt-4 max-w-sm">
+          Property in Coimbatore, thoughtfully presented.
         </p>
       </div>
 
-      <!-- Quick Contact Pill -->
+      <!-- Quick Brochure / Contact Pill -->
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
         <div class="relative w-full sm:w-auto min-w-0 sm:min-w-[320px]">
           <input 
             type="email" 
-            placeholder="Enter email for brochure..." 
+            placeholder="Enter email for layout brochure..." 
             class="w-full px-4 sm:px-5 py-3 sm:py-3.5 rounded-full bg-white/10 border border-white/15 focus:outline-none focus:border-[#cbf33e] text-xs sm:text-sm text-white placeholder-white/40 pr-24"
           />
           <a 
@@ -50,11 +65,13 @@ import { siteConfig } from '../data/sanjay-gardens';
         <h4 class="font-bold uppercase tracking-widest text-[#cbf33e] text-xs mb-3 sm:mb-4">Explore</h4>
         <ul class="space-y-2 sm:space-y-2.5 text-white/70">
           <li><a href="#hero" class="hover:text-white transition-colors">Home</a></li>
+          <li><a href="#sanjay-garden" class="hover:text-white transition-colors">Sanjay Garden</a></li>
           <li><a href="#about" class="hover:text-white transition-colors">About Sanjay Properties</a></li>
-          <li><a href="#sanjay-gardens" class="hover:text-white transition-colors">Sanjay Gardens</a></li>
+          <li><a href="#layout" class="hover:text-white transition-colors">Layout Viewer</a></li>
           <li><a href="#location" class="hover:text-white transition-colors">Location & Connectivity</a></li>
           <li><a href="#gallery" class="hover:text-white transition-colors">Architectural Gallery</a></li>
           <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+          <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
         </ul>
       </div>
 
@@ -62,16 +79,17 @@ import { siteConfig } from '../data/sanjay-gardens';
       <div>
         <h4 class="font-bold uppercase tracking-widest text-[#cbf33e] text-xs mb-3 sm:mb-4">Featured Project</h4>
         <ul class="space-y-2 sm:space-y-2.5 text-white/70">
-          <li><span class="text-white font-medium">Sanjay Gardens</span></li>
-          <li><span>Coimbatore, Tamil Nadu</span></li>
-          <li><span>Residential Plots & Villas</span></li>
+          <li><strong class="text-white font-semibold">Sanjay Garden</strong></li>
+          <li><span>Saravanampatti, Coimbatore</span></li>
+          <li><span>Historical Ref: {siteConfig.layoutApprovalRef}</span></li>
+          <li><span>Residential House Sites</span></li>
           <li><a href="#contact" class="text-[#cbf33e] hover:underline">Schedule Site Visit →</a></li>
         </ul>
       </div>
 
       <!-- Col 3: Direct Advisory -->
       <div>
-        <h4 class="font-bold uppercase tracking-widest text-[#cbf33e] text-xs mb-3 sm:mb-4">Contact</h4>
+        <h4 class="font-bold uppercase tracking-widest text-[#cbf33e] text-xs mb-3 sm:mb-4">Direct Contact</h4>
         <ul class="space-y-2 sm:space-y-2.5 text-white/70">
           <li><span>{siteConfig.officeLocation}</span></li>
           <li><a href={`mailto:${siteConfig.email}`} class="hover:text-white transition-colors truncate block">{siteConfig.email}</a></li>
@@ -83,20 +101,20 @@ import { siteConfig } from '../data/sanjay-gardens';
               rel="noopener noreferrer"
               class="text-[#cbf33e] hover:underline inline-flex items-center gap-1"
             >
-              WhatsApp Support ↗
+              WhatsApp Direct ↗
             </a>
           </li>
         </ul>
       </div>
 
-      <!-- Col 4: Trust & Compliance -->
+      <!-- Col 4: Trust & Transparency -->
       <div>
         <h4 class="font-bold uppercase tracking-widest text-[#cbf33e] text-xs mb-3 sm:mb-4">Transparency</h4>
         <p class="text-white/60 text-xs leading-relaxed mb-3">
-          All documentation, masterplan drawings, and title certifications are furnished transparently for verified buyer review.
+          Historical layout approvals and survey records are made available for verified purchaser review upon request.
         </p>
         <span class="inline-flex items-center gap-1.5 text-[11px] text-[#cbf33e]">
-          <span>✓</span> Transparent Verification
+          <span>✓</span> Transparent Documentation
         </span>
       </div>
 
@@ -104,7 +122,7 @@ import { siteConfig } from '../data/sanjay-gardens';
 
     <!-- Bottom Bar -->
     <div class="pt-6 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs text-white/50">
-      <p>© {new Date().getFullYear()} {siteConfig.brandName}. All rights reserved.</p>
+      <p>© {new Date().getFullYear()} {siteConfig.brandName}. All rights reserved. Saravanampatti, Coimbatore, Tamil Nadu – 641035.</p>
       
       <div class="flex items-center gap-6">
         <a href="#hero" class="hover:text-white transition-colors">Back to top ↑</a>

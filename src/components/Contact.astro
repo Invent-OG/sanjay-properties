@@ -1,16 +1,16 @@
 ---
-import { siteConfig } from '../data/sanjay-gardens';
+import { siteConfig } from '../data/sanjayGarden';
 ---
 
 <section id="contact" class="py-12 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
   
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-start">
     
-    <!-- Left Column: Contact Information -->
+    <!-- Left Column: Contact Coordinates & Details -->
     <div class="lg:col-span-5 gsap-fade-up">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-[#121417] mb-3">
         <span class="w-1.5 h-1.5 rounded-full bg-[#cbf33e]"></span>
-        DIRECT ENQUIRY
+        DIRECT CONTACT
       </div>
       
       <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#121417] leading-[1.18] sm:leading-[1.15] mb-3 sm:mb-4">
@@ -18,7 +18,7 @@ import { siteConfig } from '../data/sanjay-gardens';
       </h2>
 
       <p class="text-sm sm:text-base text-[#5c626c] font-normal leading-relaxed mb-6 sm:mb-8">
-        Connect directly with our dedicated Coimbatore advisory team to receive masterplans, pricing documentation, and schedule site visits.
+        Connect directly with Sanjay Properties to receive project layout drawings, verify documentation, or schedule a personal visit to Sanjay Garden in Saravanampatti.
       </p>
 
       <!-- Details List -->
@@ -28,8 +28,18 @@ import { siteConfig } from '../data/sanjay-gardens';
             📍
           </div>
           <div>
-            <p class="text-[10px] sm:text-xs text-[#5c626c] uppercase tracking-wider font-semibold">Location</p>
+            <p class="text-[10px] sm:text-xs text-[#5c626c] uppercase tracking-wider font-semibold">Office Address</p>
             <p class="font-bold text-[#121417]">{siteConfig.officeLocation}</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-white border border-black/5">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#cbf33e]/30 flex items-center justify-center text-[#0e1013] shrink-0 font-bold text-xs sm:text-sm">
+            📞
+          </div>
+          <div class="truncate">
+            <p class="text-[10px] sm:text-xs text-[#5c626c] uppercase tracking-wider font-semibold">Phone</p>
+            <a href={`tel:${siteConfig.phone.replace(/[^0-9+]/g, '')}`} class="font-bold text-[#121417] hover:text-[#cbf33e] transition-colors truncate block">{siteConfig.phone}</a>
           </div>
         </div>
 
@@ -48,7 +58,7 @@ import { siteConfig } from '../data/sanjay-gardens';
             💬
           </div>
           <div class="truncate">
-            <p class="text-[10px] sm:text-xs text-[#5c626c] uppercase tracking-wider font-semibold">WhatsApp Direct</p>
+            <p class="text-[10px] sm:text-xs text-[#5c626c] uppercase tracking-wider font-semibold">WhatsApp Support</p>
             <a 
               href={`https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(siteConfig.whatsappDefaultMsg)}`}
               target="_blank"
@@ -65,7 +75,7 @@ import { siteConfig } from '../data/sanjay-gardens';
     <!-- Right Column: Enquiry Form Card -->
     <div class="lg:col-span-7 gsap-fade-up">
       <div class="bg-white rounded-[1.75rem] sm:rounded-[2.5rem] p-6 sm:p-10 border border-black/5 shadow-lg">
-        <h3 class="text-lg sm:text-2xl font-bold text-[#121417] mb-4 sm:mb-6">Submit Your Enquiry</h3>
+        <h3 class="text-lg sm:text-2xl font-bold text-[#121417] mb-4 sm:mb-6">Send Direct Enquiry</h3>
 
         <form id="enquiry-form" class="space-y-3.5 sm:space-y-4">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
@@ -114,9 +124,9 @@ import { siteConfig } from '../data/sanjay-gardens';
                 name="interest" 
                 class="w-full px-4 py-3 sm:py-3.5 rounded-2xl bg-neutral-50 border border-black/10 focus:outline-none focus:border-[#0e1013] text-sm text-[#121417]"
               >
-                <option value="Sanjay Gardens - Residential Plots">Sanjay Gardens - Residential Plots</option>
-                <option value="Sanjay Gardens - Villa Layout">Sanjay Gardens - Villa Layout</option>
-                <option value="Schedule Site Visit">Schedule Personal Site Visit</option>
+                <option value="Sanjay Garden - Residential House Sites">Sanjay Garden - Residential House Sites</option>
+                <option value="Sanjay Garden - Layout Plan Request">Sanjay Garden - Layout Plan Request</option>
+                <option value="Schedule Site Visit in Saravanampatti">Schedule Site Visit in Saravanampatti</option>
                 <option value="General Property Advisory">General Property Advisory</option>
               </select>
             </div>
@@ -128,23 +138,23 @@ import { siteConfig } from '../data/sanjay-gardens';
               id="message" 
               name="message" 
               rows="3" 
-              placeholder="Tell us about your preferred plot dimensions, timeline, or queries..." 
+              placeholder="Tell us about your preferred plot dimensions, timeline, or queries regarding Sanjay Garden..." 
               class="w-full px-4 py-3 sm:py-3.5 rounded-2xl bg-neutral-50 border border-black/10 focus:outline-none focus:border-[#0e1013] text-sm text-[#121417]"
             ></textarea>
           </div>
 
           <button 
             type="submit" 
-            class="w-full py-3.5 sm:py-4 rounded-full bg-[#0e1013] text-white font-bold text-sm sm:text-base hover:bg-[#cbf33e] hover:text-[#0e1013] transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+            class="w-full py-3.5 sm:py-4 rounded-full bg-[#0e1013] text-white font-bold text-sm sm:text-base hover:bg-[#cbf33e] hover:text-[#0e1013] transition-all duration-300 shadow-md flex items-center justify-center gap-2 cursor-pointer"
           >
-            <span>Send Enquiry</span>
+            <span>SEND ENQUIRY</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
             </svg>
           </button>
 
           <p id="form-feedback" class="text-center text-xs text-emerald-700 font-semibold hidden pt-2">
-            ✓ Thank you! Your enquiry has been recorded. Our team in Coimbatore will reach out shortly.
+            ✓ Thank you! Your enquiry has been received. Our team in Coimbatore will connect with you shortly.
           </p>
         </form>
       </div>

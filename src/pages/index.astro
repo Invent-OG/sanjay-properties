@@ -3,12 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
-import ProjectHighlights from '../components/ProjectHighlights.astro';
+import ProjectEntityBlock from '../components/ProjectEntityBlock.astro';
 import SanjayGardens from '../components/SanjayGardens.astro';
+import LayoutViewer from '../components/LayoutViewer.astro';
 import Location from '../components/Location.astro';
 import WhySanjay from '../components/WhySanjay.astro';
 import PropertyShowcase from '../components/PropertyShowcase.astro';
 import Gallery from '../components/Gallery.astro';
+import TrustTransparency from '../components/TrustTransparency.astro';
 import Testimonials from '../components/Testimonials.astro';
 import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
@@ -18,50 +20,56 @@ import MobileStickyBar from '../components/MobileStickyBar.astro';
 ---
 
 <Layout>
-  <!-- 01. Floating Navigation -->
+  <!-- 01. Floating Luxury Navigation -->
   <Navbar />
 
   <main>
-    <!-- 02. Hero Section -->
+    <!-- 02. Cinematic Hero Section -->
     <Hero />
 
-    <!-- 03. About / Brand Introduction -->
+    <!-- 03. About Sanjay Properties -->
     <About />
 
-    <!-- 04. Project Highlights -->
-    <ProjectHighlights />
+    <!-- 04. Project Entity Block & Information Cards -->
+    <ProjectEntityBlock />
 
-    <!-- 05. Sanjay Gardens Feature Section -->
+    <!-- 05. Featured Project: Sanjay Garden -->
     <SanjayGardens />
 
-    <!-- 06. Location Section -->
+    <!-- 06. Interactive Layout Masterplan Viewer -->
+    <LayoutViewer />
+
+    <!-- 07. Location & Saravanampatti Connectivity -->
     <Location />
 
-    <!-- 07. Why Sanjay Properties -->
+    <!-- 08. Why Sanjay Garden (4 Core Principles) -->
     <WhySanjay />
 
-    <!-- 08. Property / Layout Showcase -->
+    <!-- 09. Property Showcase (Find Your Place) -->
     <PropertyShowcase />
 
-    <!-- 09. Gallery Section -->
+    <!-- 10. Architectural Perspectives Gallery -->
     <Gallery />
 
-    <!-- 10. Testimonials / Client Advisory -->
+    <!-- 11. Trust & Document Transparency (Built around clarity) -->
+    <TrustTransparency />
+
+    <!-- 12. Customer Perspectives -->
     <Testimonials />
 
-    <!-- 11. FAQ Section -->
+    <!-- 13. Verified 10-Question FAQ Accordion -->
     <FAQ />
 
-    <!-- 12. Final Cinematic CTA -->
+    <!-- 14. Final Cinematic Call-To-Action -->
     <CTA />
 
-    <!-- 13. Direct Contact Section -->
+    <!-- 15. Direct Contact & Enquiry Section -->
     <Contact />
   </main>
 
-  <!-- 14. Luxury Dark Footer -->
+  <!-- 16. Luxury Black Footer with Large Watermark Typography -->
   <Footer />
 
-  <!-- 15. Mobile Sticky Quick Action Bar -->
+  <!-- 17. Mobile Sticky Quick Action Bar -->
   <MobileStickyBar />
 </Layout>

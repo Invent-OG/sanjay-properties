@@ -1,43 +1,71 @@
 ---
-import { galleryItems } from '../data/sanjay-gardens';
+import { galleryCategories, galleryItems } from '../data/sanjayGarden';
 ---
 
 <section id="gallery" class="py-12 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
   
   <!-- Header -->
-  <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-14 gap-4 sm:gap-6 gsap-fade-up">
+  <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 sm:gap-6 gsap-fade-up">
     <div>
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-[#121417] mb-2 sm:mb-3">
         <span class="w-1.5 h-1.5 rounded-full bg-[#cbf33e]"></span>
-        ARCHITECTURAL PORTFOLIO
+        ARCHITECTURAL GALLERY
       </div>
       <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#121417]">
-        Discover
+        Visual Perspectives
       </h2>
     </div>
 
     <p class="text-xs sm:text-sm md:text-base text-[#5c626c] max-w-md">
-      A visual exploration of thoughtful architecture, serene water features, and expansive open living in Coimbatore.
+      Perspectives reflecting thoughtful spatial planning, serene surroundings, and residential environments in Coimbatore.
     </p>
   </div>
 
-  <!-- Asymmetric 4-Card Luxury Architectural Grid (Responsive: 1 col on mobile, 2 col on tablet, 4 col on desktop) -->
+  <!-- Category Filter Pills -->
+  <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-6 sm:mb-8 scrollbar-none gsap-fade-up" role="tablist">
+    {galleryCategories.map((cat, idx) => (
+      <button 
+        type="button" 
+        data-filter={cat}
+        class={`gallery-filter-btn px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
+          idx === 0 
+            ? 'bg-[#0e1013] text-white shadow-sm active-filter' 
+            : 'bg-white border border-black/5 text-[#5c626c] hover:text-[#121417] hover:bg-neutral-100'
+        }`}
+      >
+        {cat}
+      </button>
+    ))}
+  </div>
+
+  <!-- 4-Card Luxury Architectural Grid with Lightbox Trigger -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 gsap-stagger-container">
     {galleryItems.map((item, index) => (
-      <div class={`gsap-stagger-item flex flex-col group ${index === 1 ? 'lg:-translate-y-4' : ''}`}>
+      <div 
+        class={`gallery-card-item gsap-stagger-item flex flex-col group cursor-pointer ${index === 1 ? 'lg:-translate-y-4' : ''}`}
+        data-category={item.category}
+        data-img={item.image}
+        data-title={item.title}
+        data-caption={item.caption}
+      >
         <div class="relative rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden bg-neutral-200 aspect-[4/3] sm:aspect-[1/1] lg:aspect-[4/5] shadow-md image-zoom-container">
+          <!-- PLACEHOLDER — REPLACE WITH CLIENT IMAGE -->
           <img 
             src={item.image} 
-            alt={`Sanjay Gardens Coimbatore - ${item.title}`} 
+            alt={`Sanjay Garden Saravanampatti - ${item.title}`} 
             class="w-full h-full object-cover object-center"
             loading="lazy"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           
           <div class="absolute top-3.5 right-3.5">
             <span class="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-xs font-bold text-[#121417] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              ↗
+              🔍
             </span>
+          </div>
+
+          <div class="absolute bottom-3 left-3 right-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span class="text-[10px] font-mono uppercase text-[#cbf33e]">{item.category}</span>
           </div>
         </div>
 
@@ -49,9 +77,126 @@ import { galleryItems } from '../data/sanjay-gardens';
           <h3 class="text-sm sm:text-base font-bold text-[#121417] mt-0.5 group-hover:text-[#0e1013] transition-colors">
             {item.title}
           </h3>
+          <p class="text-xs text-[#5c626c] mt-0.5">
+            {item.caption}
+          </p>
         </div>
       </div>
     ))}
   </div>
 
+  <!-- Note for Client Verification -->
+  <p class="text-[11px] text-[#5c626c] text-center mt-8 italic">
+    * Architectural perspectives. Actual on-site photographs and layout drawings are updated in accordance with Sanjay Properties archives.
+  </p>
+
 </section>
+
+<!-- Lightbox Modal -->
+<div 
+  id="gallery-lightbox" 
+  class="fixed inset-0 z-[130] bg-black/95 text-white flex flex-col justify-between p-4 sm:p-8 opacity-0 pointer-events-none transition-all duration-300"
+>
+  <div class="flex items-center justify-between pb-4 border-b border-white/15">
+    <div>
+      <h3 id="lightbox-title" class="text-sm sm:text-base font-bold">Image Preview</h3>
+      <p id="lightbox-caption" class="text-xs text-white/60 mt-0.5">Sanjay Garden, Coimbatore</p>
+    </div>
+    <button 
+      id="close-lightbox" 
+      type="button" 
+      class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+      aria-label="Close Lightbox"
+    >
+      ✕
+    </button>
+  </div>
+
+  <div class="my-auto flex items-center justify-center p-2 max-h-[78vh] overflow-hidden">
+    <img 
+      id="lightbox-img" 
+      src="" 
+      alt="Gallery Preview" 
+      class="max-h-[75vh] w-auto max-w-full rounded-2xl shadow-2xl object-contain"
+    />
+  </div>
+
+  <div class="text-center text-xs text-white/50 pt-3 border-t border-white/15">
+    Sanjay Properties • Saravanampatti, Coimbatore
+  </div>
+</div>
+
+<script>
+  function setupGallery() {
+    const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+    const cards = document.querySelectorAll('.gallery-card-item');
+    const lightbox = document.getElementById('gallery-lightbox');
+    const closeBtn = document.getElementById('close-lightbox');
+    const lbImg = document.getElementById('lightbox-img') as HTMLImageElement;
+    const lbTitle = document.getElementById('lightbox-title');
+    const lbCaption = document.getElementById('lightbox-caption');
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        filterBtns.forEach((b) => {
+          b.classList.remove('bg-[#0e1013]', 'text-white', 'shadow-sm', 'active-filter');
+          b.classList.add('bg-white', 'border', 'border-black/5', 'text-[#5c626c]');
+        });
+        btn.classList.add('bg-[#0e1013]', 'text-white', 'shadow-sm', 'active-filter');
+        btn.classList.remove('bg-white', 'border', 'border-black/5', 'text-[#5c626c]');
+
+        cards.forEach((card) => {
+          const cat = card.getAttribute('data-category');
+          if (filter === 'All' || cat === filter) {
+            (card as HTMLElement).style.display = 'flex';
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+        });
+      });
+    });
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const src = card.getAttribute('data-img');
+        const title = card.getAttribute('data-title');
+        const cap = card.getAttribute('data-caption');
+
+        if (lightbox && lbImg && src) {
+          lbImg.src = src;
+          if (lbTitle && title) lbTitle.textContent = title;
+          if (lbCaption && cap) lbCaption.textContent = cap;
+          lightbox.classList.remove('opacity-0', 'pointer-events-none');
+          lightbox.classList.add('opacity-100', 'pointer-events-auto');
+          document.documentElement.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    closeBtn?.addEventListener('click', () => {
+      if (lightbox) {
+        lightbox.classList.add('opacity-0', 'pointer-events-none');
+        lightbox.classList.remove('opacity-100', 'pointer-events-auto');
+        document.documentElement.style.overflow = '';
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox && !lightbox.classList.contains('opacity-0')) {
+        lightbox.classList.add('opacity-0', 'pointer-events-none');
+        lightbox.classList.remove('opacity-100', 'pointer-events-auto');
+        document.documentElement.style.overflow = '';
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupGallery);
+  } else {
+    setupGallery();
+  }
+
+  document.addEventListener('astro:page-load', setupGallery);
+</script>
