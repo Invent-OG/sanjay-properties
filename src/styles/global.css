@@ -7,8 +7,10 @@
     --bg-card: #ffffff;
     --bg-dark: #0e1013;
     --bg-dark-card: #16181d;
-    --accent-lime: #cbf33e;
-    --accent-lime-hover: #bce628;
+    --accent-gold: #E6AF47;
+    --accent-gold-hover: #d99f36;
+    --accent-lime: #E6AF47;
+    --accent-lime-hover: #d99f36;
     --text-primary: #121417;
     --text-secondary: #5c626c;
     --text-muted: #8b929e;
@@ -48,7 +50,7 @@
   }
 
   ::selection {
-    background-color: #cbf33e;
+    background-color: #E6AF47;
     color: #0e1013;
   }
 }

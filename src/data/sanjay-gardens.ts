@@ -45,7 +45,7 @@ export const projectHighlights = [
     title: "Thoughtfully Designed Layouts",
     desc: "Engineered with expansive internal avenues, optimized natural ventilation, and landscaped green zones.",
     badge: "Masterplanned Community",
-    isAccent: true, // Lime accent card inspired by the reference design
+    isAccent: true, // Gold accent card inspired by the reference design
   },
   {
     id: "03",
